@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0284c7">
+    <meta name="description" content="Juego de Memorama PWA con temática de Tecnología">
+    <title>Tech Match - Memorama PWA</title>
+
+    <!-- Manifiesto PWA -->
+    <link rel="manifest" href="./manifest.json">
+
+    <!-- Iconos y Estilos -->
+    <link rel="icon" type="image/png" href="./icon-192.png">
+    <link rel="apple-touch-icon" href="./icon-192.png">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="game-header">
+            <h1>💻 TECH MATCH ⚡</h1>
+            <p class="subtitle">¡Encuentra todas las parejas tecnológicas!</p>
+        </header>
+
+        <!-- Panel de Estadísticas -->
+        <section class="stats-panel" aria-label="Estadísticas del juego">
+            <div class="stat-box">
+                <span class="stat-label">⏱️ Tiempo</span>
+                <span class="stat-value" id="timer">00:00</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-label">🎯 Movimientos</span>
+                <span class="stat-value" id="moves">0</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-label">✨ Parejas</span>
+                <span class="stat-value" id="pairs">0 / 8</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-label">🏆 Récord</span>
+                <span class="stat-value" id="bestTime">--:--</span>
+            </div>
+        </section>
+
+        <!-- Tablero del Juego -->
+        <main class="game-main">
+            <div class="grid" id="gameBoard"></div>
+        </main>
+
+        <!-- Controles -->
+        <div class="controls">
+            <button id="btnRestart" class="btn-secondary">Reiniciar Partida</button>
+            <button id="btnInstall" class="btn-primary" style="display: none;">📱 Instalar App</button>
+        </div>
+    </div>
+
+    <!-- Modal de Victoria -->
+    <div id="winModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2>🎉 ¡Excelente! ¡Ganaste!</h2>
+            <p>Completaste el desafío Tech Match.</p>
+            <div class="modal-stats">
+                <p>Tiempo final: <span id="finalTime">00:00</span></p>
+                <p>Movimientos totales: <span id="finalMoves">0</span></p>
+            </div>
+            <button id="btnPlayAgain" class="btn-primary">⚡ Jugar de Nuevo</button>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>

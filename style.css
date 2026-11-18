@@ -1,0 +1,174 @@
+:root {
+    --bg-main: #0f172a;
+    --accent-blue: #0284c7;
+    --accent-cyan: #38bdf8;
+    --card-bg: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+    --card-back: #1e293b;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 540px;
+    text-align: center;
+}
+
+.game-header h1 {
+    font-size: clamp(1.6rem, 5vw, 2.3rem);
+    letter-spacing: 2px;
+    color: #fff;
+    text-shadow: 0 0 12px rgba(56, 189, 248, 0.8);
+    margin-bottom: 4px;
+}
+
+.subtitle {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 18px;
+}
+
+/* Panel de Estadísticas */
+.stats-panel {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    padding: 12px 8px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(8px);
+}
+
+.stat-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+}
+
+.stat-value {
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: var(--accent-cyan);
+}
+
+/* Tablero de Cartas */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.card {
+    aspect-ratio: 1;
+    background: var(--card-back);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    font-size: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 12px;
+    user-select: none;
+    transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover {
+    transform: scale(1.04);
+    border-color: var(--accent-cyan);
+}
+
+.card.flipped {
+    background: var(--card-bg);
+    border-color: #fff;
+    transform: rotateY(180deg);
+}
+
+/* Botones y Controles */
+.controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.btn-primary, .btn-secondary {
+    border: none;
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: opacity 0.2s, transform 0.1s;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.4);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.btn-primary:active, .btn-secondary:active {
+    transform: scale(0.96);
+}
+
+/* Modal de Victoria */
+.modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(15, 23, 42, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    z-index: 100;
+}
+
+.modal-content {
+    background: #1e293b;
+    border: 2px solid var(--accent-cyan);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 320px;
+    width: 90%;
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+}
+
+.modal-content h2 {
+    color: var(--accent-cyan);
+    margin-top: 0;
+}
+
+.modal-stats {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 15px 0;
+}

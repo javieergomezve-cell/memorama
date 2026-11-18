@@ -189,23 +189,27 @@ if ('serviceWorker' in navigator) {
         .catch(err => console.error('Error al registrar Service Worker:', err));
 }
 
-// Instalación manual de la PWA
+// Instalación manual de la PWA con respuesta garantizada al hacer clic
 let deferredPrompt;
+const btnInstall = document.getElementById('btnInstall');
+
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
-    const btnInstall = document.getElementById('btnInstall');
-    if (btnInstall) {
-        btnInstall.style.display = 'inline-block';
-        btnInstall.addEventListener('click', () => {
+});
+
+if (btnInstall) {
+    btnInstall.addEventListener('click', () => {
+        if (deferredPrompt) {
             deferredPrompt.prompt();
             deferredPrompt.userChoice.then((choiceResult) => {
                 if (choiceResult.outcome === 'accepted') {
                     console.log('Usuario aceptó instalar la PWA');
                 }
                 deferredPrompt = null;
-                btnInstall.style.display = 'none';
             });
-        });
-    }
-});
+        } else {
+            alert("¡Para instalar la PWA, recuerda usar el menú de compartir de Safari en tu iPhone o el menú de tu navegador!");
+        }
+    });
+}
